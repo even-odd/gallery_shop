@@ -1,14 +1,16 @@
 <template>
-  <div class="catalog_page">
-    <div class="catalog--title">
-      Картины эпохи Возрождения
-    </div>
-    <div class="catalog">
-      <Product
-        v-for="product in products"
-        :key="product.id"
-        :product="product"
-      />
+  <div class="page_box">
+    <div class="catalog_page">
+      <h1 class="catalog--title">
+        Картины эпохи Возрождения
+      </h1>
+      <div class="catalog">
+        <Product
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -32,3 +34,17 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.catalog_page {
+  width: 1200px;
+  margin: 0 auto;
+}
+.catalog--title {
+  margin: 0 0 39px 0;
+}
+.catalog {
+  display: flex;
+  justify-content: space-around;
+}
+</style>

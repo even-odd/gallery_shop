@@ -5,11 +5,13 @@
 
 <script>
 import consts from '../consts/pageControllerConsts'
+import { CATALOG_PATH } from '../consts/navRouterConsts'
 import { CHANGE_PAGE } from '../consts/eventBusConsts'
 
 import ErrorPage from './gl_error_page'
 
 const { PAGES } = consts
+const DEFAULT_PAGE = CATALOG_PATH
 
 // ПОКА не поддерживает вложенность, но можно немного поиграться
 // и все будет ок. Реализовал ради демонстрации
@@ -42,7 +44,7 @@ export default {
       data = data || {}
       let { page } = data
 
-      let currentPage = page || getCurrentPage()
+      let currentPage = page || getCurrentPage() || DEFAULT_PAGE
       if (!currentPage) return console.warn('Page is not exist!')
 
       this.pageToRender = PAGES[currentPage]

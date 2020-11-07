@@ -5,15 +5,23 @@
       :key="index"
       :class="['nav--item_box', { active: isCurrent(item) }]"
     >
-      <a v-if="isDefLink(item)" :href="item.path">{{ item.title }}</a>
+      <a
+        v-if="isDefLink(item)"
+        :class="item.options.className"
+        :href="item.path"
+        >{{ item.options.title }}</a
+      >
 
       <img
         v-else-if="isImageLink(item)"
-        :src="item.source"
+        :class="item.options.className"
+        :src="item.options.source"
         @click="changePage(item)"
       />
 
-      <button v-else @click="changePage(item)">{{ item.title }}</button>
+      <button v-else :class="item.options.className" @click="changePage(item)">
+        {{ item.options.title }}
+      </button>
     </div>
   </div>
 </template>
@@ -46,7 +54,7 @@ export default {
         page: item.path,
       }
 
-      this.$bus.dispatсh(CHANGE_PAGE, data)
+      this.$bus.dispatch(CHANGE_PAGE, data)
     },
 
     isCurrent(item) {
@@ -63,3 +71,36 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.nav {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav:first-child {
+  margin-left: -28px;
+}
+
+.path {
+  margin-left: 28px;
+  color: #555555;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.path-a {
+  padding: 5px 10px;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 150%;
+  outline: none;
+}
+.path-img {
+}
+.path-button {
+}
+</style>

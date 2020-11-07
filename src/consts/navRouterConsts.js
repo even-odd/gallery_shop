@@ -1,6 +1,6 @@
 export const NAV_ITEMS_TYPES = {
   A_LINK: 0,
-  PATH_LINK: 1,
+  BTN_LINK: 1,
   IMG_LINK: 2,
 }
 
@@ -22,32 +22,50 @@ export const NAV_ITEMS = [
   {
     type: NAV_ITEMS_TYPES.IMG_LINK,
     path: CATALOG_PATH,
-    source: '../assets/logo.png',
+    options: {
+      source: require('../assets/logo.svg'),
+      className: 'path path-img path-logo',
+    },
   },
   {
-    type: NAV_ITEMS_TYPES.PATH_LINK,
+    type: NAV_ITEMS_TYPES.A_LINK,
     path: CATALOG_PATH,
-    title: 'Каталог',
+    options: {
+      title: 'Каталог',
+      className: 'path path-a path-catalog',
+    },
   },
   {
     type: NAV_ITEMS_TYPES.A_LINK,
     path: DELIVERY_PATH,
-    title: 'Доставка',
+    options: {
+      title: 'Доставка',
+      className: 'path path-a path-delivery',
+    },
   },
   {
     type: NAV_ITEMS_TYPES.A_LINK,
     path: PAYMENT_PATH,
-    title: 'Оплата',
+    options: {
+      title: 'Оплата',
+      className: 'path path-a path-payment',
+    },
   },
   {
     type: NAV_ITEMS_TYPES.A_LINK,
     path: CONTACT_PATH,
-    title: 'Контакты',
+    options: {
+      title: 'Контакты',
+      className: 'path path-a path-contacts',
+    },
   },
   {
     type: NAV_ITEMS_TYPES.A_LINK,
     path: ABOUT_PATH,
-    title: 'О галерее',
+    options: {
+      title: 'О галерее',
+      className: 'path path-a path-about',
+    },
   },
 ]
 

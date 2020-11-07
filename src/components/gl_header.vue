@@ -17,3 +17,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.main_header {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  height: 88px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+</style>

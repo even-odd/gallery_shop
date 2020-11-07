@@ -1,5 +1,6 @@
 /* eslint-disable no-prototype-builtins */
 import { ACTION_LIST } from '../consts/eventBusConsts'
+import { generateKey } from '../helpers'
 
 // TODO:
 // 1. Добавить игнор лист (в виде функции)
@@ -11,7 +12,6 @@ class LocalSaver {
 
   constructor(bus) {
     this._bus = bus
-    this.syncronize()
     this.subscribeOnAllEvents()
   }
 
@@ -32,30 +32,11 @@ class LocalSaver {
   }
 
   makeCast(action, data) {
-    console.debug('To save:', { data, action })
-
     let prepared = JSON.stringify(data)
-    localStorage.setItem(action, prepared)
-  }
+    let key = generateKey(action, data)
 
-  syncronize() {
-    console.debug({ storage: JSON.stringify(localStorage) })
-
-    for (let key in localStorage) {
-      if (!ACTION_LIST.includes(key)) continue
-      if (!localStorage.hasOwnProperty(key)) continue
-
-      let persisted = localStorage.getItem(key),
-        prepared = JSON.parse(persisted)
-
-      console.debug('sync', {
-        key,
-        persisted,
-        prepared,
-      })
-
-      this._bus.dispatch(key, prepared)
-    }
+    console.debug('To save:', { data, key })
+    localStorage.setItem(key, prepared)
   }
 
   clear() {
